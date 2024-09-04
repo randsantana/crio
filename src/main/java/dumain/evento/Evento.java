@@ -20,23 +20,13 @@ public class Evento {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "titulo")
     private String titulo;
-
-    @Column(name = "descricao")
     private String descricao;
-
-    @Column(name = "inicio")
     private LocalDateTime inicio;
-
-    @Column(name = "fim")
     private LocalDateTime fim;
-
-    @Column(name = "local")
     private String local;
-
-    @Column(name = "privado")
     private boolean privado;
+
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private int usuario_id;

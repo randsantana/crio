@@ -26,4 +26,8 @@ public class Usuario {
     private LocalDateTime createdAT;
     private LocalDateTime updatedAT;
 
+    @ManyToOne
+    @JoinColumn(name = "convite_id")
+    private int convite_id;
+
 }
