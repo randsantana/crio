@@ -1,4 +1,4 @@
-package dumain.convite;
+package api.de.gerenciamento.de.eventos.dumain.convite;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

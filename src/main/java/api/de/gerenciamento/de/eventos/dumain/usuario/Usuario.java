@@ -1,4 +1,4 @@
-package dumain.usuario;
+package api.de.gerenciamento.de.eventos.dumain.usuario;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,9 +25,5 @@ public class Usuario {
     private int tipo;
     private LocalDateTime createdAT;
     private LocalDateTime updatedAT;
-
-    @ManyToOne
-    @JoinColumn(name = "convite_id")
-    private int convite_id;
 
 }

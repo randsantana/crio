@@ -1,5 +1,6 @@
-package dumain.evento;
+package api.de.gerenciamento.de.eventos.dumain.evento;
 
+import api.de.gerenciamento.de.eventos.dumain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +29,6 @@ public class Evento {
     private boolean privado;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private int usuario_id;
+    @JoinColumn(name="usuario_id")
+    private Usuario usuario;
 }

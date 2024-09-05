@@ -1,10 +1,10 @@
-package service;
+package api.de.gerenciamento.de.eventos.service;
 
-import dumain.usuario.Usuario;
-import dumain.usuario.UsuarioRequestDTO;
+import api.de.gerenciamento.de.eventos.dumain.usuario.Usuario;
+import api.de.gerenciamento.de.eventos.dumain.usuario.UsuarioRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.UsuarioRepository;
+import api.de.gerenciamento.de.eventos.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {

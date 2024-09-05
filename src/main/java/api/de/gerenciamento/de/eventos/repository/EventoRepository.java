@@ -1,6 +1,6 @@
-package repository;
+package api.de.gerenciamento.de.eventos.repository;
 
-import dumain.evento.Evento;
+import api.de.gerenciamento.de.eventos.dumain.evento.Evento;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

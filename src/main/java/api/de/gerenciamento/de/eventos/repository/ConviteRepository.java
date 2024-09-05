@@ -1,6 +1,6 @@
-package repository;
+package api.de.gerenciamento.de.eventos.repository;
 
-import dumain.convite.Convite;
+import api.de.gerenciamento.de.eventos.dumain.convite.Convite;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
