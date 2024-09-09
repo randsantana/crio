@@ -4,11 +4,12 @@ import api.de.gerenciamento.de.eventos.dumain.usuario.Usuario;
 import api.de.gerenciamento.de.eventos.dumain.usuario.UsuarioRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import api.de.gerenciamento.de.eventos.service.UsuarioService;
+
+import javax.swing.text.html.parser.Entity;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/usuario")
@@ -25,5 +26,15 @@ public class UsuarioController {
         UsuarioRequestDTO usuarioRequestDTO = new UsuarioRequestDTO(nomeCompleto, email, senha, tipo);
         Usuario newUsuario = this.usuarioService.createUsuario(usuarioRequestDTO);
         return ResponseEntity.ok(newUsuario);
+    }
+    @GetMapping
+    public  ResponseEntity<List<Usuario>> getAllUsers(){
+        List<Usuario> usuarios = this.usuarioService.getAllUsers();
+        return ResponseEntity.ok(usuarios);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Entity> getUserById(@PathVariable("id")UUID id){
+        Usuario usuario = this.usuarioService.getUserById(id);
+        return ResponseEntity.ok(usuario);
     }
 }

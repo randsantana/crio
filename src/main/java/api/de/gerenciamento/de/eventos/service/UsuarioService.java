@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import api.de.gerenciamento.de.eventos.repository.UsuarioRepository;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 public class UsuarioService {
     @Autowired
@@ -20,5 +23,13 @@ public class UsuarioService {
         newUsuario.setTipo(data.tipo());
         usuarioRepository.save(newUsuario);
         return newUsuario;
+    }
+
+    public List<Usuario> getAllUsers() {
+        return usuarioRepository.findAll();
+    }
+
+    public Usuario getUserById(UUID id) {
+        return usuarioRepository.findById(id).;
     }
 }
