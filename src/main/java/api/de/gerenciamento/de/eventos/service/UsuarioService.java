@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import api.de.gerenciamento.de.eventos.repository.UsuarioRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +31,20 @@ public class UsuarioService {
     }
 
     public Usuario getUserById(UUID id) {
-        return usuarioRepository.findById(id).;
+        return usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encintrado."));
+    }
+
+    public Usuario updateUser(UUID id, UsuarioRequestDTO usuarioRequestDTO) {
+        Usuario updateUsuario = getUserById(id);
+        updateUsuario.setNomeCompleto(usuarioRequestDTO.nomeCompleto());
+        updateUsuario.setEmail(usuarioRequestDTO.email());
+        updateUsuario.setSenha(usuarioRequestDTO.senha());
+        updateUsuario.setTipo(usuarioRequestDTO.tipo());
+        updateUsuario.setUpdatedAT(LocalDateTime.now());
+        return usuarioRepository.save(updateUsuario);
+    }
+    public void deleteUser(UUID id){
+        Usuario usuario = getUserById(id);
+        usuarioRepository.delete(usuario);
     }
 }

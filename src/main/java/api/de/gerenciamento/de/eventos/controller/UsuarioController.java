@@ -16,10 +16,10 @@ import java.util.UUID;
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
-    @PostMapping(consumes = "multipart/from-data")
+    @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<Usuario> create(
             //mapeamento dos campos
-            @RequestParam("nomecompleto") String nomeCompleto,
+            @RequestParam("nomeCompleto") String nomeCompleto,
             @RequestParam("email") String email,
             @RequestParam("senha") String senha,
             @RequestParam("tipo") int tipo) {
@@ -33,8 +33,19 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Entity> getUserById(@PathVariable("id")UUID id){
+    public ResponseEntity<Usuario> getUserById(@PathVariable("id")UUID id){
         Usuario usuario = this.usuarioService.getUserById(id);
         return ResponseEntity.ok(usuario);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> UpdateUser(
+            @PathVariable("id")UUID id, UsuarioRequestDTO usuarioRequestDTO){
+        Usuario updateUsuario = this.usuarioService.updateUser(id,usuarioRequestDTO);
+        return  ResponseEntity.ok(updateUsuario);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("id")UUID id){
+        this.usuarioService.deleteUser(id);
+        return  ResponseEntity.noContent().build();
     }
 }
