@@ -20,7 +20,6 @@ public class Evento {
     @GeneratedValue
     @Column(name = "id")
     private UUID id;
-
     private String titulo;
     private String descricao;
     private LocalDateTime inicio;
