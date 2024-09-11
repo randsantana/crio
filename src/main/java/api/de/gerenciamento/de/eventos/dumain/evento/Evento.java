@@ -24,10 +24,13 @@ public class Evento {
     private String descricao;
     private LocalDateTime inicio;
     private LocalDateTime fim;
-    private String local;
     private boolean privado;
+    private String linkEvento;
+    private String comoChegar;
+    private String linkForms;
 
     @ManyToOne
     @JoinColumn(name="usuario_id")
     private Usuario usuario;
+
 }

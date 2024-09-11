@@ -11,8 +11,10 @@ public record EventoResponseDTO (
         String descricao,
         LocalDateTime inicio,
         LocalDateTime fim,
-        String local,
         boolean privado,
+        String linkEvento,
+        String comoChegar,
+        String linkForm,
         Usuario usuario
 ){
 }
