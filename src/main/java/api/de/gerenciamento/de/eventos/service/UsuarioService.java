@@ -30,6 +30,12 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    //save usuarioRepository
+    public Usuario saveUsuario(String nomeCompleto, String email, String senha, int tipo,
+                        LocalDateTime createdAt, LocalDateTime updatedAt){
+       return usuarioRepository.saveUsuario(nomeCompleto, email, senha, tipo, createdAt, updatedAt);
+    }
+
     public Usuario getUserById(UUID id) {
         return usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encintrado."));
     }
@@ -40,7 +46,7 @@ public class UsuarioService {
         updateUsuario.setEmail(usuarioRequestDTO.email());
         updateUsuario.setSenha(usuarioRequestDTO.senha());
         updateUsuario.setTipo(usuarioRequestDTO.tipo());
-        updateUsuario.setUpdatedAT(LocalDateTime.now());
+        updateUsuario.setUpdatedAt(LocalDateTime.now());
         return usuarioRepository.save(updateUsuario);
     }
     public void deleteUser(UUID id){

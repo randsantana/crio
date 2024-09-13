@@ -2,12 +2,14 @@ package api.de.gerenciamento.de.eventos.controller;
 
 import api.de.gerenciamento.de.eventos.dumain.usuario.Usuario;
 import api.de.gerenciamento.de.eventos.dumain.usuario.UsuarioRequestDTO;
+import api.de.gerenciamento.de.eventos.dumain.usuario.UsuarioResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import api.de.gerenciamento.de.eventos.service.UsuarioService;
 
 import javax.swing.text.html.parser.Entity;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,6 +18,19 @@ import java.util.UUID;
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
+    //CRUD
+    @PostMapping("/save")//  /api/usuario/save
+    public Usuario saveUsuario(@RequestBody UsuarioRequestDTO usuarioRequestDTO){
+        return usuarioService.saveUsuario(
+                usuarioRequestDTO.nomeCompleto(),
+                usuarioRequestDTO.email(),
+                usuarioRequestDTO.senha(),
+                usuarioRequestDTO.tipo(),
+                LocalDateTime.now(),
+                LocalDateTime.now()
+        );
+    }
+
     @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<Usuario> create(
             //mapeamento dos campos
